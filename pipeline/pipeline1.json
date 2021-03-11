@@ -21,9 +21,15 @@
 						"detectDatetime": false
 					},
 					"sink": {
-						"type": "AzureTableSink",
-						"azureTableInsertType": "merge",
-						"writeBatchSize": 10000
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
 					},
 					"enableStaging": false
 				},
@@ -35,7 +41,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "AzureTable1",
+						"referenceName": "DelimitedText1",
 						"type": "DatasetReference"
 					}
 				]
